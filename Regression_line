@@ -1,0 +1,23 @@
+import numpy as np
+while True:
+    x_arr = input("Enter numbers separated by spaces: ")
+    y_arr = input("Enter numbers seperated by spaces: ")
+    x_list = [int(x) for x in x_arr.split() ]
+    y_list = [int(y) for y in y_arr.split() ]
+    n=len(x_arr)
+    sum_x = sum(x_list)
+    sum_square_x = sum([num**2 for num in x_list])
+    sum_y = sum(y_list)
+    x_np = np.array(x_list)
+    y_np = np.array(y_list)
+    xy = x_np*y_np
+    sum_xy = sum(xy)
+    A = np.array([[n, sum_x], [sum_x, sum_square_x]])
+    B = np.array([sum_y, sum_xy])
+
+    a, b = np.linalg.solve(A, B)
+    print(sum_x)
+    print(sum_y)
+    print(sum_square_x)
+    print(sum_xy)
+    print(f"Equation of best fit line: y = {a} + {b}x")
